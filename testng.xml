@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Loan Department">
+
+<!-- Parameters can be defined as suite levele as well as Test level-->
+	<parameter name="URL" value="https://www.digitalfiverr.com" />
+	<parameter name="APIKey/userName" value="DF12398"></parameter>
+
+	<test name="Loan Test">
+
+		<classes>
+
+			<class name="LoanManagement.CarLoan">
+				<methods>
+					<!--webLoginCarLoan will not run-->
+					<exclude name="webLoginCarLoan" />
+				</methods>
+			</class>
+
+			<class name="LoanManagement.HomeLoan">
+				<methods>
+					<!--run only apiLoginHomeLoan test case-->
+					<include name="apiLoginHomeLoan" />
+				</methods>
+			</class>
+
+		</classes>
+	</test>
+
+	<test name="Personal Loan">
+
+		<parameter name="URL" value="personalloan.com" />
+
+		<classes>
+			<class name="LoanManagement.PersonalLoan">
+				<methods>
+					<!--exclude all the test cases starts with mobile-->
+					<exclude name="mobile.*" />
+				</methods>
+			</class>
+
+		</classes>
+
+	</test> <!--Test -->
+
+</suite> <!--Suite -->
